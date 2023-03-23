@@ -1,0 +1,165 @@
+.container {
+    padding: 15em;
+    margin: 3em;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    background-color: rgb(89, 141, 186);
+    border-radius: 20px;
+    border: 5px dotted aqua;
+
+    & .btn {
+        z-index: 10;
+
+            & .bar,
+            &::after,
+            &::before {
+                display: block;
+                grid-area: 1 / 1;  //これにより、3つを重ねて同じ位置に配置する
+                content: "";
+                width: 32px;
+                height: 2px;
+                background-color: azure;
+                transition: all 0.4s;
+            }
+    }
+
+    & .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        position: absolute;
+        height: auto;
+        width: 100%;
+        padding: 1em;
+
+
+        & a {
+            transition: opacity 0.2s;
+            opacity: 0;
+        }
+    }
+
+
+    & .menuIsClosed {
+        display: grid;
+        place-items: center;
+        position: relative;
+        padding: 1em 1em;
+        border-radius: 20px;
+        transition: all 0.4s;
+        
+
+        & .btn {
+            display: grid;
+            place-items: center;
+            margin: 1em;
+            width: 42px;
+            height: 42px;
+            background: gray;
+            border: none;
+
+            & .bar {
+                position: relative;
+                background: black;
+                
+            }
+
+            &::after {
+                background: black;
+                transform: translateY(8px);
+            }
+
+            &::before {
+                background: black;
+                transform: translateY(-8px);
+            }
+    
+            &:hover {
+                cursor: pointer;
+            }
+    
+        }
+    
+        & .menu {
+            display: grid;
+            place-items: center;
+            position: absolute;
+            transition: all 0.4s;
+            height: 0%;
+            top: 0%;
+            border-radius: 20px 20px 0 0;
+            
+
+            & a {
+                text-decoration: none;
+                background: transparent;
+                opacity: 0;
+    
+                &:hover {
+                    color: aqua;
+                }
+            }
+        }
+    } 
+
+
+    & .menuIsOpened {
+        display: grid;
+        place-items: center;
+        position: relative;
+        padding: 1em 1em;
+        border-radius: 20px 20px 0 0;
+        transition: all 0.4s;
+
+        & .btn {
+            display: grid;
+            place-items: center;
+            margin: 1em;
+            width: 42px;
+            height: 42px;
+            background: gray;
+            border: none;
+    
+            &:hover {
+                cursor: pointer;
+            }
+
+            & .bar {
+                transition: background 0s;
+                background: transparent;
+            }
+
+            &::after {
+                transform: rotate(45deg);
+            }
+
+            &::before {
+                transform: rotate(-45deg);
+            }
+    
+        }
+    
+        & .menu {
+            position: absolute;
+            transition: all 0.4s;
+            top: 100%;
+            height: auto;
+            border-radius: 0 0 20px 20px;
+    
+            & a {
+                text-decoration: none;
+                background: transparent;
+                opacity: 1;
+                
+    
+                &:hover {
+                    color: aqua;
+                }
+            }
+        }
+    } 
+
+
+}
